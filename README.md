@@ -239,7 +239,7 @@ export default myComponentContent;
 ## server components
 
 - with 'use client' removed
-- /server
+- update the import path `import { useIntlayer } from "next-intlayer/server`
 
 ```ts
 import { useIntlayer } from "next-intlayer/server";
