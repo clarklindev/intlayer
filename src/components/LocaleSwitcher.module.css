@@ -1,0 +1,13 @@
+.buttons{
+    margin-top: 30px;
+}
+
+.link{
+    padding: 1rem;
+    border: 1px solid red;   
+    margin-left: 15px;
+}
+
+.link:first-of-type{
+    margin-left:0; 
+}

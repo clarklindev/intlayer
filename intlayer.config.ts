@@ -1,14 +1,7 @@
-## install dependencies
-
-npm install intlayer next-intlayer
-
-## create intlayer.config.ts
-
-```ts
 import { Locales, type IntlayerConfig } from "intlayer";
 
 const config: IntlayerConfig = {
-  internationalisation: {
+  internationalization: {
     locales: [
       Locales.ENGLISH,
       Locales.FRENCH,
@@ -20,4 +13,3 @@ const config: IntlayerConfig = {
 };
 
 export default config;
-```
