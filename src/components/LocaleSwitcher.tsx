@@ -10,18 +10,15 @@ import {
 import { useLocale, useLocaleCookie } from "next-intlayer";
 import Link from "next/link";
 
-import styles from './LocaleSwitcher.module.css'; 
-
 export const LocaleSwitcher: FC = () => {
   const { locale, pathWithoutLocale, availableLocales } = useLocale();
   const { setLocaleCookie } = useLocaleCookie();
 
   return (
-    <div className={styles.buttons}>
+    <div>
       <div>
         {availableLocales.map((localeItem) => (
           <Link
-            className={styles.link}
             href={getLocalizedUrl(pathWithoutLocale, localeItem)}
             hrefLang={localeItem}
             key={localeItem}
