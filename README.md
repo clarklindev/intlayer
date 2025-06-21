@@ -191,7 +191,7 @@ const myComponentContent = {
 export default myComponentContent;
 ```
 
-## gitigonore
+## .gitignore
 
 - add to .gitignore: `.intlayer`
 
