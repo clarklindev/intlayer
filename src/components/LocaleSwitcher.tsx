@@ -2,38 +2,53 @@
 
 import type { FC } from "react";
 import {
-  Locales,
-  getHTMLTextDir,
   getLocaleName,
   getLocalizedUrl,
+  Locales,
 } from "intlayer";
 import { useLocale, useLocaleCookie } from "next-intlayer";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const LocaleSwitcher: FC = () => {
   const { locale, pathWithoutLocale, availableLocales } = useLocale();
   const { setLocaleCookie } = useLocaleCookie();
+  const router = useRouter();
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLocale = event.target.value as Locales;
+    setLocaleCookie(selectedLocale);
+    const newUrl = getLocalizedUrl(pathWithoutLocale, selectedLocale);
+    router.push(newUrl);
+  };
 
   return (
-    <div>
-      <div>
+    <div
+      style={{
+        position: "absolute",
+        top: 20,
+        right: 20,
+        zIndex: 1000,
+      }}
+    >
+      <select
+        value={locale}
+        onChange={handleChange}
+        style={{
+          padding: "6px 12px",
+          fontSize: "14px",
+          color: "#000", // black text
+          backgroundColor: "#fff", // white background
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
+      >
         {availableLocales.map((localeItem) => (
-          <Link
-            href={getLocalizedUrl(pathWithoutLocale, localeItem)}
-            hrefLang={localeItem}
-            key={localeItem}
-            aria-current={locale === localeItem ? "page" : undefined}
-            onClick={() => setLocaleCookie(localeItem)}
-          >
-       
-            <span>
-              {/* Language in its own Locale - e.g. Français */}
-              {getLocaleName(localeItem, locale)}
-            </span>
-           
-          </Link>
+          <option value={localeItem} key={localeItem}>
+            {getLocaleName(localeItem, locale)}
+          </option>
         ))}
-      </div>
+      </select>
     </div>
   );
 };
