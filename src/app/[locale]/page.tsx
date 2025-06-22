@@ -1,6 +1,5 @@
-import type { FC } from "react";
 import { type NextPageIntlayer, IntlayerClientProvider } from "next-intlayer";
-import { IntlayerServerProvider, useIntlayer } from "next-intlayer/server";
+import { IntlayerServerProvider } from "next-intlayer/server";
 import { MyComponent } from "@/components/MyComponent";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
