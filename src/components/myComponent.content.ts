@@ -5,7 +5,7 @@ const myComponentContent = {
   content: {
     title: t({
       en:'salmon',
-      zh:'鮭魚'
+      'zh-Hant':'鮭魚'
     }),
   },
 } satisfies Dictionary;
