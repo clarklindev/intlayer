@@ -4,15 +4,9 @@ const myComponentContent = {
   key: 'my-component',
   content: {
     title: t({
-      en:'my new title',
-      fr:'mon nouveau titre',
-      es:"mi nuevo titulo"
+      en:'salmon',
+      zh:'鮭魚'
     }),
-    paragraph: t({
-      en: 'my paragraph',
-      fr:'mon paragraphe',
-      es:'mi parrafo'
-    })
   },
 } satisfies Dictionary;
 

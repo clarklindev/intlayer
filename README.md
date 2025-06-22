@@ -19,8 +19,7 @@ const config: IntlayerConfig = {
   internationalisation: {
     locales: [
       Locales.ENGLISH,
-      Locales.FRENCH,
-      Locales.SPANISH,
+      Locales.CHINESE,
       // Your other locales
     ],
     defaultLocale: Locales.ENGLISH,
@@ -98,17 +97,6 @@ import { IntlayerServerProvider, useIntlayer } from "next-intlayer/server";
 import { MyComponent } from "@/components/MyComponent";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
-const PageContent: FC = () => {
-  const content = useIntlayer("page");
-
-  return (
-    <>
-      <p>{content.getStarted.main}</p>
-      <code>{content.getStarted.pageLink}</code>
-    </>
-  );
-};
-
 const Page: NextPageIntlayer = async ({ params }) => {
   const { locale } = await params;
 
@@ -152,13 +140,22 @@ import { useIntlayer } from "next-intlayer";
 
 // CTRL + SHIFT + P: Intlayer create dictionary file (typescript)
 
+("use client");
+import Image from "next/image";
+import { useIntlayer } from "next-intlayer";
+// import { useIntlayer } from "next-intlayer/server"; for server components
+
+import styles from "./MyComponent.module.css";
+
+// CTRL + SHIFT + P: Intlayer create dictionary file (typescript)
+
 export const MyComponent = () => {
   const content = useIntlayer("my-component");
 
   return (
-    <div>
-      <h1>{content.title}</h1>
-      <p>{content.paragraph}</p>
+    <div className={styles.tattoo}>
+      <Image src={"/clean-arm.jpg"} alt="logo" width="600" height="430" />
+      <p className={styles["tattoo-word"]}>{content.title}</p>
     </div>
   );
 };
@@ -176,14 +173,8 @@ const myComponentContent = {
   key: "my-component",
   content: {
     title: t({
-      en: "my new title",
-      fr: "mon nouveau titre",
-      es: "mi nuevo titulo",
-    }),
-    paragraph: t({
-      en: "my paragraph",
-      fr: "mon paragraphe",
-      es: "mi parrafo",
+      en: "salmon",
+      zh: "鮭魚",
     }),
   },
 } satisfies Dictionary;
@@ -242,7 +233,10 @@ export default myComponentContent;
 - update the import path `import { useIntlayer } from "next-intlayer/server`
 
 ```ts
-import { useIntlayer } from "next-intlayer/server";
+import Image from "next/image";
+import { useIntlayer } from "next-intlayer/server"; for server components
+
+import styles from "./MyComponent.module.css";
 
 // CTRL + SHIFT + P: Intlayer create dictionary file (typescript)
 
@@ -250,9 +244,9 @@ export const MyComponent = () => {
   const content = useIntlayer("my-component");
 
   return (
-    <div>
-      <h1>{content.title}</h1>
-      <p>{content.paragraph}</p>
+    <div className={styles.tattoo}>
+      <Image src={"/clean-arm.jpg"} alt="logo" width="600" height="430" />
+      <p className={styles["tattoo-word"]}>{content.title}</p>
     </div>
   );
 };

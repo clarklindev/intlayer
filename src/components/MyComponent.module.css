@@ -1,0 +1,15 @@
+.tattoo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 600px;
+  min-height: 100vh;
+}
+
+.tattoo-word{
+  position: absolute;
+  font-size: 50px;
+  font-weight: 600;
+  color: black;
+}
